@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>BADUIZM(S) • a visual album by gavcloud</title>
+    
+    <!-- METADATA --------------------------------------- -->
+    <meta name="robots" content="noindex, nofollow">    
+    <meta name="author" content="" />
+    <meta name="copyright" content="" />
+
+    <!-- Paged.js -->
+    <link rel="stylesheet" type="text/css" href="css/pagedjs/pagedjs.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <script src="js/paged.polyfill.js"></script>
+    <script src="js/handlers.js"></script>
+    <script src="js/toc.js"></script>
+
+    <!-- Table of Contents -->
+    <script>
+      class handlers extends Paged.Handler {
+        constructor(chunker, polisher, caller) {
+          super(chunker, polisher, caller);
+        }
+    
+        beforeParsed(content) {
+          createToc({
+            content: content,
+            tocElement: "#toc",
+            titleElements: [".title-element h1, .song-title h1"], // titleElements: [".mw-content-ltr h2", "h3"],
+          });
+        }
+      }
+      Paged.registerHandlers(handlers);
+    </script>
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  </head>
+
+  <body>
+
+
+    <!-- BOOK --------------------------------------- -->
+
+    <!-- COVER --------------------------------------- -->
+    <section id="cover" style="height: 100%;">
+        
+      <div class="cover-image-container">
+        <img src="images/cover-v1.jpeg" alt="Baduizm(s)">
+      </div>
+
+      <div style="position: absolute; bottom: 40px; left: 0; right: 0; padding-left: 5mm; text-align: center;">
+          
+          <img src="images/erykah-badu-presents-alpha.png" alt="Erykah Badu" style="width: 200px; margin-bottom: 8px;">
+
+          <h1 id="cover-title" style="margin: 10px 0 0 0;">
+              Baduizm(s)
+          </h1>
+          
+          <h2 id="author" style="margin-top: 0;">
+              a visual album by gavcloud
+          </h2>
+
+      </div>
+
+  </section>
+
+  <!-- FRONT MATTER -------------------------------- -->
+
+  <section class="frontmatter blank">
+  </section>
+
+  <section class="frontmatter">
+    <div>
+      <p style="margin-bottom: 10px; font-size: 0.85em;">Erykah Badu presents ...</p>
+      <span style="font-family: 'Le Murmure'; font-weight: 500; font-size: 3.5em; text-transform: uppercase;">
+        Baduizm(s)</span><br>
+      <p style="margin-top: 0; font-size: 0.75em;">a visual album by <strong>gavcloud</strong></p>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -------------------------------- -->
+
+  <section class="chapter">
+    <h3 style="text-transform: uppercase;">Contents</h3>
+    <ul id="toc"></ul>
+  </section>
+  
+
+  <!-- CONTENT --------------------------------------- -->
+
+  <section class="new-page">
+    <h1 id="essay" class="title-element" data-title-level="h1">
+      On the concept of Baduizm(s) by Olivia Ekeh
+    </h1>
+  </section>
+  
+  <section class="new-page">
+    <h1 id="she-ill" class="title-element" data-title-level="h1">
+      SHE ILL
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="fatbellybella" class="title-element" data-title-level="h1">
+      @FatBellyBella
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="lo-down-loretta-brown" class="title-element" data-title-level="h1">
+      Lo Down Loretta Brown
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="baduola-oblangata" class="title-element" data-title-level="h1">
+      Baduola Oblangata
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="fly-n-kka-factory" class="title-element" data-title-level="h1">
+      Fly N*kka Factory
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="manuela-maria-mejico" class="title-element" data-title-level="h1">
+      Manuela María Mejico
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="sara-bellum" class="title-element" data-title-level="h1">
+      Sara Bellum
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="annie-the-alchemist" class="title-element" data-title-level="h1">
+      Annie The Alchemist
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="analog-girl-in-a-digital-world" class="title-element" data-title-level="h1">
+      Analog Girl In A Digital World
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="ok-player" class="title-element" data-title-level="h1">
+      O.K. Player
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="bootchie-9-betty" class="title-element" data-title-level="h1">
+      Bootchie 9 Betty
+    </h1>
+  </section>
+
+  <section class="new-page">
+    <h1 id="the-unicorn" class="title-element" data-title-level="h1">
+      The Unicorn
+    </h1>
+  </section>
+
+  </body>
+  
+</html>

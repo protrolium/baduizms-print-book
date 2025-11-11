@@ -1,0 +1,292 @@
+@font-face {
+    font-family: 'Outward';
+    src:    local('../fonts/outward-block-webfont.eot');
+    src:    url('../fonts/outward-block-webfont.woff') format('woff'),
+            url('../fonts/outward-block-webfont.woff2') format('woff2'),
+            url('../fonts/outward-block.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Le Murmure';
+    src:    local('fonts/LeMurmure-Regular.eot');
+    src:    url('../fonts/LeMurmure-Regular.woff') format('woff'),
+            url('../fonts/LeMurmure-Regular.woff2') format('woff2'),
+            url('../fonts/le-murmure.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* create variables for the colors */
+:root {
+    --color-background: #1a1a1a;
+    --color-text: #d1d1d1;
+    --color-text-green: #C0F7BF;
+    --color-link: #007bff;
+    --color-visited: #6c757d;
+    --color-hover: #6c757d;
+    --color-active: #6c757d;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Helvetica';
+    font-weight: 100;
+}
+
+p {
+    font-family: 'Helvetica';
+    font-weight: normal;
+    font-size: 1em;
+}
+
+@media print {
+
+    /* Size and marin for all pages ------------- */
+    @page {
+        size: 135mm 203mm;
+        margin-top: 20mm;
+        margin-bottom: 20mm;
+        marks: crop;
+        background-color: var(--color-background);
+        color: var(--color-text);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+
+    /* LEFT PAGES -------------------------------- */
+
+    @page:left {
+        margin-left: 10mm;
+        margin-right: 30mm;
+        @bottom-left {
+            content: counter(page);
+            width: 40px;
+        }
+        @bottom-center {
+            content: "Baduizm(s)";
+            text-align: left;
+        }
+    }
+
+
+    /* RIGHT PAGES -------------------------------- */
+
+    @page:right {
+        margin-left: 20mm;
+        margin-right: 10mm;
+        @bottom-right {
+            content: counter(page);
+            width: 40px;
+        }
+        @bottom-center{
+            content: string(chapTitle);
+            text-align: right;
+        }
+    }
+
+    .chapter  h1 { 
+        string-set: chapTitle content(text); 
+        font-family: 'Le Murmure';
+    }
+
+
+    /* BLANK PAGES -------------------------------- */
+
+    @page:blank {
+        @bottom-left { content: none; }
+        @bottom-center { content: none; }
+        @bottom-right { content: none; }
+    }
+
+
+    /* COVER -------------------------------- */
+
+    @page:first {
+        margin: 0 0;
+        background-color: #000;
+        @bottom-right { content: none; }
+    }
+
+    #cover-title, #cover-title h1 {
+        font-family: 'Outward';
+        font-weight: normal;
+        font-size: 8.5em;
+        color: white;
+        line-height: 0.7;
+        text-transform: uppercase;
+    }
+
+    .cover-image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        overflow: hidden;
+    }
+
+    #cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        /* mix-blend-mode: lighten; */
+    }
+
+    #author {
+        font-family: 'Le Murmure';
+        font-weight: regular;
+        font-size: 1.5em;
+        color: var(--color-text-green);
+    }
+
+    /* SECTION BREAKS -------------------------------- */
+
+    .blank {
+        height: 100%;
+    }
+
+    .chapter {
+        break-before: right;
+    }
+
+    .new-page {
+        break-before: page;
+    }
+
+    /* FRONT MATTER -------------------------------- */
+
+    .frontmatter {
+        page: frontmatterLayout;
+    }
+    
+    @page frontmatterLayout {
+        @bottom-left { content: none; }
+        @bottom-center { content: none; }
+        @bottom-right { content: none; }
+    }
+
+    /* CONTENT --------------------------------------- */
+
+    figure, img{
+        width: 100%;
+    }
+
+    h1 {
+        font-family: 'Le Murmure';
+        font-weight: normal;
+        font-size: 4.5em;
+    }
+
+    h2 {
+        font-family: 'Le Murmure';
+        font-weight: normal;
+        font-size: 3.5em;
+    }
+
+    h3 {
+        font-family: 'Le Murmure';
+        font-weight: normal;
+        font-size: 2.5em;
+    }
+
+    /* Table of Contents */
+
+    #toc li a::after {
+        content: target-counter(attr(href), page);
+        float: right;
+      }
+
+    ul {
+        padding-inline-start: 0;
+        line-height: 1.5;
+    }
+
+    /* set the style for the list numbering to none */
+    #list-toc-generated {
+        list-style: none;
+    }
+    
+    #list-toc-generated .toc-element {
+        break-inside: avoid;
+    }
+    
+    #list-toc-generated .toc-element a::after {
+        content: " " target-counter(attr(href), page);
+        float: right;
+    }
+    
+    #list-toc-generated .toc-element-level-1 {
+        margin-top: 25px;
+        font-weight: bold;
+    }
+    
+    #list-toc-generated .toc-element-level-2 {
+        margin-left: 25px;
+    }
+    
+    /* counters */
+    
+    #list-toc-generated {
+        counter-reset: counterTocLevel1;
+    }
+    
+    #list-toc-generated .toc-element-level-1 {
+        counter-increment: counterTocLevel1;
+        counter-reset: counterTocLevel2;
+    }
+    
+    #list-toc-generated .toc-element-level-1::before {
+        content: counter(counterTocLevel1) ". ";
+        padding-right: 5px;
+    }
+    
+    #list-toc-generated .toc-element-level-2 {
+        counter-increment: counterTocLevel2;
+    }
+    
+    #list-toc-generated .toc-element-level-2::before {
+        content: counter(counterTocLevel1) ". " counter(counterTocLevel2) ". ";
+        padding-right: 5px;
+    }
+    
+    /* hack for leaders */
+    
+    #list-toc-generated {
+        overflow-x: hidden;
+    }
+    
+    /* fake leading */
+    #list-toc-generated .toc-element::after {
+        content: ".............................................."
+        ".............................................."
+        ".............................................." "........";
+        float: left;
+        width: 0;
+        padding-left: 5px;
+        letter-spacing: 2px;
+    }
+    
+    #list-toc-generated .toc-element {
+        display: flex;
+    }
+
+    #list-toc-generated .toc-element a {
+        color: var(--color-text);
+    }
+
+    #list-toc-generated .toc-element a::after {
+        position: absolute;
+        right: 0;
+        background-color: var(--color-background);
+        padding-left: 4px;
+    }
+    
+    #list-toc-generated .toc-element a {
+        right: 0;
+    }
+
+} 
