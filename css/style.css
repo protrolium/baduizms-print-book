@@ -35,9 +35,54 @@ body {
 
 p {
     font-family: 'Helvetica';
-    font-weight: normal;
+    font-weight: 300;
     font-size: 1em;
 }
+
+.center-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 10mm 0;
+}
+
+.center-page img {
+    max-width: 100%;
+    height: auto;
+}
+
+.flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm;
+    height: 100%;
+}
+
+.flex-item-2x3 {  
+    flex: 1 1 calc(50% - 4mm);
+    min-height: 60mm;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.flex-item-1x2 {
+    flex: 1 1 calc(55% - 4mm);
+    min-height: 100mm;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.flex-item-1x3 {
+    flex: 1 1 calc(55% - 4mm);
+    min-height: 65mm;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 
 @media print {
 
@@ -60,7 +105,7 @@ p {
 
     @page:left {
         margin-left: 10mm;
-        margin-right: 30mm;
+        margin-right: 20mm;
         @bottom-left {
             content: counter(page);
             width: 40px;
@@ -169,6 +214,32 @@ p {
         @bottom-right { content: none; }
     }
 
+    /* NO MARGINS -------------------------------- */
+
+    .no-margins {
+        page: noMarginsLayout;
+    }
+
+    @page noMarginsLayout {
+        margin: 2mm;
+        height: 100%;
+        @bottom-left { content: none; }
+        @bottom-center { content: none; }
+        @bottom-right { content: none; }
+    }
+
+    .center-page {
+        min-height: 100%;
+        padding: 0;
+    }
+
+    .center-page img {
+        width: auto !important;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0 auto;
+    }
+
     /* CONTENT --------------------------------------- */
 
     figure, img{
@@ -193,7 +264,7 @@ p {
         font-size: 2.5em;
     }
 
-    /* Table of Contents */
+    /* TABLE OF CONTENTS -------------------------------- */
 
     #toc li a::after {
         content: target-counter(attr(href), page);
